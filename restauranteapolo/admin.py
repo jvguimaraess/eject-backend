@@ -7,12 +7,14 @@ from .models import destaque
 class ArtigoAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'autor', 'data')
     search_fields = ('titulo', 'autor')
+    list_filter = ('data', 'autor')
     ordering = ('-titulo', '-data')
 
 @admin.register(Funcionario)
 class FuncionarioAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cargo')
     search_fields = ('nome', 'cargo')
+    list_filter = ('cargo',)
     ordering = ('-nome',)
 
 @admin.register(destaque)
