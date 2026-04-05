@@ -6,7 +6,7 @@ class Autor(models.Model):
 
     def __str__(self):
         return self.nome
-    
+
 class Artigo(models.Model):
     titulo = models.CharField(max_length=200)
     conteudo = models.TextField()
@@ -17,7 +17,7 @@ class Artigo(models.Model):
 
     def __str__(self):
         return f"{self.titulo} - {self.autor}"
-    
+
 class MembroEquipe(models.Model):
     nome = models.CharField(max_length=100)
     cargo = models.CharField(max_length=100)
@@ -26,7 +26,7 @@ class MembroEquipe(models.Model):
 
     def __str__(self):
         return f"{self.nome} - {self.cargo}"
-    
+
 class Destaque(models.Model):
     titulo = models.CharField(max_length=200)
     descricao = models.CharField(max_length=200)
@@ -34,7 +34,7 @@ class Destaque(models.Model):
 
     def __str__(self):
         return self.titulo
-    
+
 class Servico(models.Model):
     nome = models.CharField(max_length=200)
     icone = models.CharField(max_length=100)
