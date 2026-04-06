@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+# O nome aqui TEM que ser 'home' porque é o que você chamou no urls.py
+def home(request): 
+    return render(request, 'index.html')
