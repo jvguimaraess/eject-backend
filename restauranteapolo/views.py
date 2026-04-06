@@ -1,5 +1,13 @@
 from django.shortcuts import render
 
-# O nome aqui TEM que ser 'home' porque é o que você chamou no urls.py
-def home(request): 
-    return render(request, 'index.html')
+def index(request):
+    return render(request, 'restauranteapolo/index.html')
+
+def blog(request):
+    return render(request, 'restauranteapolo/blog.html')
+
+def artigo(request):
+    return render(request, 'restauranteapolo/artigo.html')
+
+def sobre(request):
+    return render(request, 'restauranteapolo/sobre.html')
