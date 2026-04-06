@@ -19,11 +19,3 @@ class MembroEquipe(models.Model):
 
     def __str__(self):
         return f"{self.nome} - {self.cargo}"
-
-class Destaque(models.Model):
-    titulo = models.CharField(max_length=200)
-    descricao = models.CharField(max_length=200)
-    icone = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.titulo

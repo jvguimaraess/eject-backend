@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Artigo, MembroEquipe, Destaque
+from .models import Artigo, MembroEquipe
 
 @admin.register(Artigo)
 class ArtigoAdmin(admin.ModelAdmin):
@@ -14,7 +14,3 @@ class MembroEquipeAdmin(admin.ModelAdmin):
     search_fields = ('nome', 'cargo')
     list_filter = ('cargo',)
 
-@admin.register(Destaque)
-class DestaqueAdmin(admin.ModelAdmin):
-    list_display = ('titulo',)
-    search_fields = ('titulo',)
