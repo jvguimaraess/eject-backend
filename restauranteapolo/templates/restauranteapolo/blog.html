@@ -32,38 +32,16 @@
         <h1>Curiosidades Gastronômicas</h1>
         <h3>Descubra a história fascinante por trás dos ingredientes e pratos que amamos</h3>
 
-        <div class="box">
-            <img src="{% static 'assets/img/massa.png' %}" alt="massa">
-            <p>10 de Março, 2026</p>
-            <h2>Os secredos da massa italiana</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde repudiandae, voluptate similique, nam cumque, ullam molestias quas laborum quam officia aut repellat totam quos consequatur corporis vitae voluptatem? Consequatur, eum!</p>
-            <button>Ler mais</button>
-        </div>
-
-        <div class="box">
-            <img src="{% static 'assets/img/alho.png' %}" alt="alho">
-            <p>08 de Março, 2026</p>
-            <h2>A importância dos Ingredientes Naturais</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, possimus ea! Blanditiis ipsam ipsa at rem fuga incidunt laudantium quas, aspernatur nesciunt sapiente temporibus officia deleniti iste placeat id saepe?</p>
-            <button>Ler mais</button>
-        </div>
-
-        <div class="box">
-            <img src="{% static 'assets/img/doce.png' %}" alt="doce">
-            <p>01 de Março, 2026</p>
-            <h2>Sobremesas: A arte do sabor</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quae recusandae ratione natus ex animi quaerat, nihil maxime atque, ut laborum commodi nemo. Quod iste nihil esse velit, tempore sed!</p>
-            <button>Ler mais</button>
-        </div>
-
-        <div class="box">
-            <img src="{% static 'assets/img/vinho.png' %}" alt="vinho">
-            <p>05 de Março, 2026</p>
-            <h2>O Segredo: Vinhos e Pratos</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem, aperiam vitae. Sit earum vel ratione eum, delectus dignissimos suscipit. Cum animi fugiat nam in et molestiae magnam eius id voluptatem?</p>
-            <button>Ler mais</button>
-        </div>
-    </section>
+{% for artigo in artigos %}
+<div class="box">
+    {% if artigo.imagem %}
+        <img src="{{ artigo.imagem.url }}" alt="{{ artigo.titulo }}">
+    {% endif %}    <p>{{ artigo.data }}</p>
+    <h2>{{ artigo.titulo }}</h2>
+    <p>{{ artigo.conteudo }}</p>
+    <a href="{% url 'artigo' artigo.id %}"><button>Ler mais</button></a>
+</div>
+{% endfor %}
 
     <footer>
         <div class="flogo">

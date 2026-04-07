@@ -68,30 +68,16 @@
         <h2>Nossa Equipe</h2>
         <p>Conheça os profissionais mais talentosos da casa!</p>
         <div class="descrition">
+            {% for membro in equipe %}
             <div class="apresenta">
-                <img src="{% static 'assets/img/chef.png' %}" alt="chef">
-                <h3>Alessandro Marino</h3>
-                <h4>Chef Executivo</h4>
-                <p>Mestre em culinária italiana com 20 anos de experiência.</p>
+                {% if membro.foto %}
+                    <img src="{{ membro.foto.url }}" alt="{{ membro.nome }}">
+                {% endif %}
+            <h3>{{ membro.nome }}</h3>
+            <h4>{{ membro.cargo }}</h4>
+            <p>{{ membro.descricao }}</p>
             </div>
-            <div class="apresenta">
-                <img src="{% static 'assets/img/sub.png' %}" alt="sub chef">
-                <h3>Alessandra Marino</h3>
-                <h4>Sub - Chef</h4>
-                <p>Mestre em culinária italiana</p>
-            </div>
-            <div class="apresenta">
-                <img src="{% static 'assets/img/aux1.png' %}" alt="Auxiliares de cozinha">
-                <h3>Eduardo e Mariana</h3>
-                <h4>Chef's de cozinha</h4>
-                <p>Especialistas em sobremesas</p>
-            </div>
-            <div class="apresenta">
-                <img src="{% static 'assets/img/aux2.png' %}" alt="Auxiliares de cozinha">
-                <h3>Daniel e João</h3>
-                <h4>Chef's de cozinha</h4>
-                <p>Especialistas em pratos premium</p>
-            </div>
+            {% endfor %}
         </div>
     </section>
 

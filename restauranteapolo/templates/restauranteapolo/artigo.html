@@ -18,7 +18,6 @@
             <a href="#" class="logo">
                 <img src="{% static 'assets/img/logo.jpeg' %}" alt="logo">
             </a>
-
             <nav class="nav">
                 <a href="{% url 'index' %}">Home</a>
                 <a href="{% url 'blog' %}">Blog</a>
@@ -27,23 +26,22 @@
             </nav>
         </section>
     </header>
-    
-    <section>
-        <h1>Os segredos da massa italiana</h1>
-        <img src="{% static 'assets/img/chef.png' %}" alt="Chef">
-        <p>Por Alessandro Marino</p>
-        <p>25/03/2026</p>
 
-        <img src="{% static 'assets/img/massa.png' %}" alt="massa">
-        <p id="leg">Legenda da imagem</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore officia sequi, libero expedita commodi quis, architecto modi reprehenderit ullam tempore nisi laudantium temporibus similique vero! Pariatur rerum maxime tenetur quod.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quis placeat dicta, quisquam vero, error nulla ab voluptatem maiores, consequatur a quo voluptatum! Perspiciatis, adipisci optio provident voluptatibus facilis odio!</p>
-        <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit itaque, facere pariatur est asperiores voluptatibus, molestias harum, libero quis laboriosam corrupti quae. Ratione sed laudantium, excepturi facere odio fuga veritatis.</span></p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur illo debitis molestias animi hic totam nam dolorem. Facilis suscipit ipsam perferendis officia, iusto similique illum quia temporibus porro laborum quas.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nisi delectus laboriosam. Fuga quod similique perferendis? Amet, inventore facere cupiditate, nesciunt in eaque doloremque laboriosam illum at veritatis illo deserunt.</p>
-        <img src="{% static 'assets/img/place.jpg' %}" alt="local">
-        <p id="leg">Legenda da imagem</p>
+<section style="margin-top: 100px;">
+        <h1>{{ artigo.titulo }}</h1>
+        <p>Por {{ artigo.autor }}</p>
+        <p>{{ artigo.data }}</p>
+
+        {% if artigo.imagem %}
+            <img src="{{ artigo.imagem.url }}" alt="{{ artigo.titulo }}">
+        {% endif %}
+
+        {% if artigo.legenda_imagem %}
+            <p id="leg">{{ artigo.legenda_imagem }}</p>
+        {% endif %}
+
+        <p>{{ artigo.conteudo }}</p>
     </section>
-    
+
 </body>
 </html>

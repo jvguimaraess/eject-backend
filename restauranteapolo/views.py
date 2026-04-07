@@ -1,13 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Artigo, MembroEquipe
+
 
 def index(request):
     return render(request, 'restauranteapolo/index.html')
 
 def blog(request):
-    return render(request, 'restauranteapolo/blog.html')
+    artigos = Artigo.objects.order_by('-data')
+    return render(request, 'restauranteapolo/blog.html', {'artigos': artigos})
 
-def artigo(request):
-    return render(request, 'restauranteapolo/artigo.html')
+def artigo(request, artigo_id):
+    artigo = get_object_or_404(Artigo, pk=artigo_id)
+    return render(request, 'restauranteapolo/artigo.html', {'artigo': artigo})
 
 def sobre(request):
-    return render(request, 'restauranteapolo/sobre.html')
+    equipe = MembroEquipe.objects.all()
+    return render(request, 'restauranteapolo/sobre.html', {'equipe': equipe})
