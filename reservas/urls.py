@@ -3,4 +3,6 @@ from . import views
 
 app_name = 'reservas'
 
-urlpatterns = []
+urlpatterns = [
+    path('reservar/', views.reservar, name='reservar'),
+]
