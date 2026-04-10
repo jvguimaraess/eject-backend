@@ -8,3 +8,4 @@ class ReservaAdmin(admin.ModelAdmin):
     list_filter = ('status', 'data_reserva')
     search_fields = ('nome_cliente',)
     ordering = ('data_reserva', 'hora_reserva')
+    list_per_page = 20
