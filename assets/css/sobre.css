@@ -197,7 +197,7 @@
     border-radius: 0.625rem;
     object-fit: cover;
     margin-bottom: 1.12rem;
-    background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+    background: url("../img/time.jpg") lightgray 50% / cover no-repeat;
 }
 
 .team .description .apresenta h3 {
@@ -259,7 +259,7 @@
     margin-bottom: 5rem;
 }
 
-.servico .container-serve .serve {
+.servico .serve {
     width: 22rem;
     height: 16rem;
     gap: 1.5rem;
