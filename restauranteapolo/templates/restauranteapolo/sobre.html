@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/sobre.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Sobre nós</title>
+</head>
+<body>
+    <header class="header">
+        <section>
+            <a href="#" class="logo">
+                <img src="{% static 'assets/img/logo.jpeg' %}" alt="logo">
+            </a>
+            <nav class="nav">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'blog' %}">Blog</a>
+                <a href="{% url 'sobre' %}">Sobre Nós</a>
+                <button class="btn btn-abrir">Fazer reserva</button>
+            </nav>
+        </section>
+    </header>
+
+    <div class="sobre">
+        <h1>Sobre Nós</h1>
+        <p>Conheça a história por trás do nosso restaurante</p>
+    </div>
+
+    <section class="historia">
+        <div>
+            <h2>Nossa História</h2>
+        </div>
+        <div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus.</p>
+            <p>loreLorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus.</p>
+            <img src="{% static 'assets/img/historia.png' %}" alt="local">
+            <p>loreLorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus.</p>
+            <p>loreLorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus, voluptate. Sed, doloremque! Doloribus.</p>
+            <img src="{% static 'assets/img/cozinha.png' %}" alt="cozinha">
+        </div>
+    </section>
+
+    <section class="valores">
+        <h2>Missão, visão e valores</h2>
+        <div class="container">
+            <div class="caixa">
+                <img id="icon" src="{% static 'assets/img/Icon-1.svg' %}" alt="">
+                <h3>Missão</h3>
+                <p>Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Voluptates cum rerum
+                    laboriosam reiciendis culpa sit iure
+                    nobis ipsa consectetur minus nam,
+                    ed doloribus harum assumenda veritatis
+                    fugiat labore praesentium provident.</p>
+            </div>
+            <div class="caixa">
+                <img id="icon" src="{% static 'assets/img/Icon.svg' %}" alt="">
+                <h3>Visão</h3>
+                <p>Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Voluptates cum rerum
+                    laboriosam reiciendis culpa sit iure
+                    nobis ipsa consectetur minus nam,
+                    sed doloribus harum assumenda veritatis
+                    fugiat labore praesentium provident.</p>
+            </div>
+            <div class="caixa">
+                <img id="icon" src="{% static 'assets/img/Icon-5.svg' %}" alt="">
+                <h3>Valores</h3>
+                <p>Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Voluptates cum rerum
+                    laboriosam reiciendis culpa sit iure
+                    nobis ipsa consectetur minus nam,
+                    sed doloribus harum assumenda veritatis
+                    fugiat labore praesentium provident.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team">
+        <h2>Nossa Equipe</h2>
+        <p>Conheça os profissionais mais talentosos da casa!</p>
+        <div class="description">
+            {% for membro in equipe %}
+            <div class="apresenta">
+                {% if membro.foto %}
+                    <img src="{{ membro.foto.url }}" alt="{{ membro.nome }}">
+                {% endif %}
+                <h3>{{ membro.nome }}</h3>
+                <h4>{{ membro.cargo }}</h4>
+                <p>{{ membro.descricao }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="servico">
+        <h2>Nossos Serviços</h2>
+        <div class="container-serve">
+            <div class="serve">
+                <img id="icon" src="{% static 'assets/img/Icon-4.svg' %}" alt="Chef em casa">
+                <h3>Chef's em casa</h3>
+            </div>
+            <div class="serve">
+                <img id="icon" src="{% static 'assets/img/Icon.svg' %}" alt="">
+                <h3>Vinhos especializados</h3>
+            </div>
+            <div class="serve">
+                <img id="icon" src="{% static 'assets/img/Icon-1.svg' %}" alt="">
+                <h3>Treinamento de Chef's</h3>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="flogo">
+            <img src="{% static 'assets/img/logon.jpeg' %}" alt="Logo">
+        </div>
+        <div class="info">
+            <div class="contato">
+                <h2>Contato</h2>
+                <div class="item">
+                    <img src="{% static 'assets/img/cell.png' %}" alt="Celular">
+                    <p>(11) 92234-5678</p>
+                </div>
+                <div class="item">
+                    <img src="{% static 'assets/img/mail.png' %}" alt="Envelope">
+                    <p>RestauranteApollo@gmail.com</p>
+                </div>
+                <div class="item">
+                    <img src="{% static 'assets/img/local.png' %}" alt="">
+                    <p>Avenida Roberto Freire, 123 - Natal/RN</p>
+                </div>
+            </div>
+            <div class="hora">
+                <h2>Horário de Funcionamento</h2>
+                <p>Segunda a sexta: 13h - 22h</p>
+                <p>Sábado e domingo: 12h - 22h</p>
+                <p>Feriados: 12h - 22h</p>
+            </div>
+            <div class="social">
+                <h2>Redes sociais</h2>
+                <div class="logos">
+                    <img src="{% static 'assets/img/face.png' %}" alt="Facebook">
+                    <img src="{% static 'assets/img/insta.png' %}" alt="Instagram">
+                    <img src="{% static 'assets/img/X.png' %}" alt="Twitter">
+                </div>
+            </div>
+            <div class="map">
+                <img id="mapa" src="{% static 'assets/img/map.png' %}" alt="mapa">
+            </div>
+        </div>
+        <div class="marca">
+            <p>2026 - MISSÃOEJECT</p>
+            <img src="{% static 'assets/img/eject.png' %}" alt="EJECT">
+        </div>
+    </footer>
+    <div id="modalReserva" class="modal">
+        <div class="content">
+            <img src="{% static 'assets/img/logo.jpeg' %}" alt="Logo">
+            <span class="close">&times;</span>
+            <h2>Faça sua reserva</h2>
+
+            <form id="formReserva">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" placeholder="Digite seu nome" required>
+                <label for="data">Data</label>
+                <input type="date" id="data" placeholder="dd/mm/aaaa" required>
+                <label for="hora">Horário</label>
+                <select id="hora" required>
+                    <option value="" disabled selected>Escolha um horário</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                </select>
+                <label for="pessoas">Quantidade de pessoas</label>
+                <select id="pessoas" required>
+                    <option value="" disabled selected>Quantidade de pessoas</option>
+                    <option value="1">1 pessoa</option>
+                    <option value="2">2 pessoas</option>
+                    <option value="3">3 pessoas</option>
+                    <option value="4">4 pessoas</option>
+                    <option value="5">5 pessoas</option>
+                    <option value="6">6+ pessoas</option>
+                    <option value="10">10+ pessoas</option>
+                    <option value="20">20+ pessoas</option>
+                </select>
+                <button id="formReservaclass" class="btn">Confirmar Reserva</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'assets/js/reserva.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <title>Noticia</title>
+</head>
+<body>
+    <header class="header">
+        <section>
+            <a href="#" class="logo">
+                <img src="{% static 'assets/img/logo.jpeg' %}" alt="logo">
+            </a>
+            <nav class="nav">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'blog' %}">Blog</a>
+                <a href="{% url 'sobre' %}">Sobre Nós</a>
+                <button>Fazer reserva</button>
+            </nav>
+        </section>
+    </header>
+
+<section style="margin-top: 100px;">
+        <h1>{{ artigo.titulo }}</h1>
+        <p>Por {{ artigo.autor }}</p>
+        <p>{{ artigo.data }}</p>
+
+        {% if artigo.imagem %}
+            <img src="{{ artigo.imagem.url }}" alt="{{ artigo.titulo }}">
+        {% endif %}
+
+        {% if artigo.legenda_imagem %}
+            <p id="leg">{{ artigo.legenda_imagem }}</p>
+        {% endif %}
+
+        <p>{{ artigo.conteudo }}</p>
+    </section>
+
+</body>
+</html>
