@@ -26,28 +26,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Tratamento do Formulário 
-    formReserva.addEventListener('submit', (event) => {
+formReserva.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        // Coleta dos dados 
         const dadosReserva = {
-            nome: document.getElementById('nome').value,
-            data: document.getElementById('data').value,
-            hora: document.getElementById('hora').value,
-            pessoas: document.getElementById('pessoas').value
+            nome_cliente: document.getElementById('nome').value,
+            data_reserva: document.getElementById('data').value,
+            hora_reserva: document.getElementById('hora').value,
+            numero_pessoas: document.getElementById('pessoas').value,
         };
 
-        const dataPura = document.getElementById('data').value;
-
-        
-        const dataBrasil = dataPura.split('-').reverse().join('/');
-
-        console.log("Dados da reserva prontos para o Back-end:", dadosReserva);
-
-        alert(`Obrigado, ${dadosReserva.nome}! Sua reserva para o dia ${dataBrasil} às ${dadosReserva.hora} foi enviada.`);
-
-        // Limpa o formulário e fecha o modal
-        formReserva.reset();
-        modal.style.display = 'none';
+        fetch('/reservas/reservar/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'),
+            },
+            body: JSON.stringify(dadosReserva),
+        })
+        .then(response => {
+            if (response.ok) {
+                const dataBrasil = dadosReserva.data_reserva.split('-').reverse().join('/');
+                alert(`Obrigado, ${dadosReserva.nome_cliente}! Sua reserva para o dia ${dataBrasil} às ${dadosReserva.hora_reserva} foi enviada.`);
+                formReserva.reset();
+                modal.style.display = 'none';
+            } else {
+                alert('Erro ao realizar reserva. Tente novamente.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao realizar reserva. Tente novamente.');
+        });
     });
 });
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.slice(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
