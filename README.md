@@ -123,11 +123,11 @@ classDiagram
 
 ---
 
-## 🔗 Links
+## Links
 
-- 🌐 **Deploy:** em breve
-- 🎨 **Repositório Front-end:** em breve
-- 🏢 **EJECT:** [ejectufrn.com.br](https://ejectufrn.com.br)
+- **Deploy:** [restauranteapollodeploy.pythonanywhere.com](https://restauranteapollodeploy.pythonanywhere.com/)
+- **Repositório Front-end:** [apollo-restaurant-system](https://github.com/marcelo0404/apollo-restaurant-system)
+- **EJECT:** [ejectufrn.com.br](https://ejectufrn.com.br)
 
 ---
 
